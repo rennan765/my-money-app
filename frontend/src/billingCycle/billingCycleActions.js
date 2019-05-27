@@ -3,15 +3,16 @@ import { toastr } from 'react-redux-toastr'
 import { reset as resetForm, initialize } from 'redux-form'
 import { showTabs, selectTab } from '../common/tab/tabActions'
 import getTypes from '../main/actionTypes'
+import getEndpoints from '../main/endpoints'
 
-const URL = 'http://localhost:3003/api/billingCycles'
+const { API_URL } = getEndpoints()
 const { billingCyclesFetched } = getTypes()
 const INITIAL_VALUES = { credits: [{}], debts: [{}] }
 
 function submit (values, method) {
     return dispatch => {
         const id = values._id ? values._id : ''
-        axios[method](`${URL}/${id}`, values)
+        axios[method](`${API_URL}/billingCycles/${id}`, values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso.')
                 dispatch(init())
@@ -21,7 +22,7 @@ function submit (values, method) {
 }
 
 export function getList () {
-    const request = axios.get(URL)
+    const request = axios.get(`${API_URL}/billingCycles`)
 
     return {
         type: billingCyclesFetched,

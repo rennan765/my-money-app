@@ -1,13 +1,14 @@
 import axios from 'axios'
 
 import getTypes from '../main/actionTypes'
+import getEndpoints from '../main/endpoints'
 
 const { billingSummaryFetched } = getTypes()
 
-const URL = 'http://localhost:3003/api/billingCycles'
+const { API_URL } = getEndpoints()
 
 export function getSummary () {
-    const request = axios.get(`${URL}/summary`)
+    const request = axios.get(`${API_URL}/billingCycles/summary`)
     return {
         type: billingSummaryFetched,
         payload: request

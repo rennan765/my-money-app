@@ -3,7 +3,7 @@ import axios from 'axios'
 import getEndpoints from '../main/endpoints'
 import getTypes from '../main/actionTypes';
 
-const OAPI_URL = 'http://localhost:3003/oapi'
+const { OAPI_URL } = getEndpoints()
 const { userFetched, tokenValidated } = getTypes()
 
 export function login (values) {
@@ -30,16 +30,10 @@ export function validateToken (token) {
     }
 }
 
-function submit (values, url) {
-    return dispatch => {
-        axios.post(url, values)
-            .then(resp => {
-                dispatch([
-                    { type: userFetched, payload: escape.data }
-                ])
-            })
-            .catch(e => {
-                e.response.dat.errors.forEach(error => toastr.error('Erro', error))
-            })
-    }
+function submit(values, url) {     
+    return dispatch => {         
+        axios.post(url, values)             
+            .then(resp => dispatch([{type: userFetched, payload: resp.data}]))
+            .catch(e => e.response.data.errors.forEach(error => toastr.error('Erro', error)))
+    } 
 }
