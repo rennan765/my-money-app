@@ -1,7 +1,7 @@
-import getTypes from '../../main/actionTypes'
+import { getActionTypes } from '../../main/consts'
 
 const INITIAL_STATE = { selected: '', visible: {} }
-const { tabSelected, tabShowed } = getTypes()
+const { tabSelected, tabShowed } = getActionTypes()
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {

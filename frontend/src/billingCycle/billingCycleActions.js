@@ -2,11 +2,10 @@ import axios from 'axios'
 import { toastr } from 'react-redux-toastr'
 import { reset as resetForm, initialize } from 'redux-form'
 import { showTabs, selectTab } from '../common/tab/tabActions'
-import getTypes from '../main/actionTypes'
-import getEndpoints from '../main/endpoints'
+import { getActionTypes, getEndpoints } from '../main/consts'
 
 const { API_URL } = getEndpoints()
-const { billingCyclesFetched } = getTypes()
+const { billingCyclesFetched } = getActionTypes()
 const INITIAL_VALUES = { credits: [{}], debts: [{}] }
 
 function submit (values, method) {

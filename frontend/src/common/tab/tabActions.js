@@ -1,6 +1,6 @@
-import getTypes from '../../main/actionTypes'
+import { getActionTypes } from '../../main/consts'
 
-const { tabSelected, tabShowed } = getTypes()
+const { tabSelected, tabShowed } = getActionTypes()
 
 export function selectTab (tabId) {
     return {

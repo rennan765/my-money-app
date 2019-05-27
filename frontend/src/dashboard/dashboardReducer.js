@@ -1,7 +1,7 @@
-import getTypes from '../main/actionTypes'
+import { getActionTypes } from '../main/consts'
 
 const INITIAL_STATE = { summary: { credit: 0, debt: 0 } }
-const { billingSummaryFetched } = getTypes()
+const { billingSummaryFetched } = getActionTypes()
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {

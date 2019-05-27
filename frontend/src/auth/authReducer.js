@@ -1,7 +1,7 @@
-import getType from '../main/actionTypes'
+import { getActionTypes } from '../main/consts'
 
 const userKey = '_mymoney_user'
-const { tokenValidated, userFetched } = getType()
+const { tokenValidated, userFetched } = getActionTypes()
 const INITIAL_STATE = {
     user: JSON.parse(localStorage.getItem(userKey)),
     validToken: false

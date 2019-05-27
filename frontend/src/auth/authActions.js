@@ -1,10 +1,9 @@
 import { toastr } from 'react-redux-toastr'
 import axios from 'axios'
-import getEndpoints from '../main/endpoints'
-import getTypes from '../main/actionTypes';
+import { getActionTypes, getEndpoints } from '../main/consts';
 
 const { OAPI_URL } = getEndpoints()
-const { userFetched, tokenValidated } = getTypes()
+const { userFetched, tokenValidated } = getActionTypes()
 
 export function login (values) {
     return submit(values, `${OAPI_URL}/login`)

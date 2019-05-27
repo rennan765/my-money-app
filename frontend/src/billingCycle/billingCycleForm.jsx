@@ -10,11 +10,16 @@ import Summary from './summary'
 class BillingCycleForm extends Component {
     calculateSummary () {
         const sum = (t, v) => t + v
+        let sumOfCredits = 0
+        let sumOfDebts = 0
 
-        return {
-            sumOfCredits: this.props.credits.map(c => +c.value || 0).reduce(sum),
-            sumOfDebts: this.props.debts.map(d => +d.value || 0).reduce(sum)
-        }
+        if (this.props.credits.length > 0)
+            sumOfCredits = this.props.credits.map(c => +c.value || 0).reduce(sum)
+
+        if (this.props.debts.length > 0)
+            sumOfDebts = this.props.debts.map(d => +d.value || 0).reduce(sum)
+
+        return { sumOfCredits, sumOfDebts }
     }
     
     render () {

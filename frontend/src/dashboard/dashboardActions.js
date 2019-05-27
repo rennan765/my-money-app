@@ -1,10 +1,8 @@
 import axios from 'axios'
 
-import getTypes from '../main/actionTypes'
-import getEndpoints from '../main/endpoints'
+import { getActionTypes, getEndpoints } from '../main/consts'
 
-const { billingSummaryFetched } = getTypes()
-
+const { billingSummaryFetched } = getActionTypes()
 const { API_URL } = getEndpoints()
 
 export function getSummary () {
